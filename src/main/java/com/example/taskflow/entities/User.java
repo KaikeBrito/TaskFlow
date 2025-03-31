@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_users")
@@ -40,6 +41,12 @@ public class User {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private Boolean isActive;
+
+    @OneToMany(mappedBy = "createdBy")
+    private List<Task> tasksCreated;
+
+    @OneToMany(mappedBy = "assignedTo")
+    private List<Task> tasksAssigned;
 
     public User() {
     }
