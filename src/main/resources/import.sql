@@ -1,0 +1,4 @@
+INSERT INTO tb_users (name, email, age, username, password, role, created_at, is_active) VALUES('Admin User', 'admin@email.com', 30, 'admin', '$2a$10$6gG9dD1XG7T3ZtCe/5B6qe.K3H8CgmdcQkK4M8vHchzYlGzU7Y5Na', 'ADMIN', CURRENT_TIMESTAMP(), TRUE);
+INSERT INTO tb_users (name, email, age, username, password, role, created_at, is_active) VALUES('Manager User', 'manager@email.com', 35, 'manager', '$2a$10$f.7Keb16/h2vT3g8D1PPgeKbY2p5mERzNYD3FfHhT6Kt0VbiD8rCy', 'MANAGER', CURRENT_TIMESTAMP(), TRUE);
+INSERT INTO tb_users (name, email, age, username, password, role, created_at, is_active) VALUES('User One', 'user1@email.com', 25, 'user1', '$2a$10$Rv8qJ2LJZLx3Xe0YvTT.yuZbHaxlclDXlXbZhN7ldA0uvH.vC9jiO', 'USER', CURRENT_TIMESTAMP(), TRUE);
+INSERT INTO tb_users (name, email, age, username, password, role, created_at, is_active) VALUES('User Two', 'user2@email.com', 28, 'user2', '$2a$10$b/WtLs3UzWcMOp1MkYfJYO88VrEwFQOCOnGvD.fB2BmH9YhlmZ0Qi', 'USER', CURRENT_TIMESTAMP(), TRUE);
