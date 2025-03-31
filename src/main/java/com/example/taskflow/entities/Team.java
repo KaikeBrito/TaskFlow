@@ -13,9 +13,9 @@ public class Team {
     private String name;
     private String description;
     private LocalDateTime createdAt;
-    @ManyToMany()
+    @ManyToMany(mappedBy = "teams")
     private List<User> members;
-    @OneToMany()
+    @ManyToMany(mappedBy = "teams")
     private List<Task> tasks;
     public Team() {}
 
