@@ -48,6 +48,14 @@ public class User {
     @OneToMany(mappedBy = "assignedTo")
     private List<Task> tasksAssigned;
 
+    @ManyToMany
+    @JoinTable(
+            name = "team_members",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id")
+    )
+    private List<Team> teams;
+
     public User() {
     }
 

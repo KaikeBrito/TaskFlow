@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_tasks")
@@ -40,10 +41,18 @@ public class Task {
     @JoinColumn(name = "assigned_to_user_id")
     private User assignedTo;
 
+    @ManyToMany
+    @JoinTable(
+            name = "task_teams",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id")
+    )
+    private List<Team> teams;
+
     public Task() {
     }
 
-    public Task(Long id, String title, String description, Status status, Priority priority, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, User createdBy, User assignedTo) {
+    public Task(Long id, String title, String description, Status status, Priority priority, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, User createdBy, User assignedTo, List<Team> teams) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -54,6 +63,7 @@ public class Task {
         this.updatedAt = updatedAt;
         this.createdBy = createdBy;
         this.assignedTo = assignedTo;
+        this.teams = teams;
     }
 
     public Long getId() {
@@ -136,4 +146,11 @@ public class Task {
         this.assignedTo = assignedTo;
     }
 
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
 }
