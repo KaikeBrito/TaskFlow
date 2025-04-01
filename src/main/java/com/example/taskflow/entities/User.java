@@ -38,6 +38,7 @@ public class User {
     @Column(name = "role")
     private Role role;
 
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private Boolean isActive;
@@ -56,10 +57,13 @@ public class User {
     )
     private List<Team> teams;
 
+    @OneToMany(mappedBy = "recipient")
+    private List<Notification> notifications;
+
     public User() {
     }
 
-    public User(Long id, String name, String email, Integer age, String username, String password, Role role, LocalDateTime createdAt, Boolean isActive) {
+    public User(Long id, String name, String email, Integer age, String username, String password, Role role, LocalDateTime createdAt, Boolean isActive, List<Task> tasksCreated, List<Task> tasksAssigned, List<Team> teams, List<Notification> notifications) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -69,6 +73,10 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
         this.isActive = isActive;
+        this.tasksCreated = tasksCreated;
+        this.tasksAssigned = tasksAssigned;
+        this.teams = teams;
+        this.notifications = notifications;
     }
 
     public Long getId() {
@@ -137,5 +145,41 @@ public class User {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Task> getTasksCreated() {
+        return tasksCreated;
+    }
+
+    public void setTasksCreated(List<Task> tasksCreated) {
+        this.tasksCreated = tasksCreated;
+    }
+
+    public List<Task> getTasksAssigned() {
+        return tasksAssigned;
+    }
+
+    public void setTasksAssigned(List<Task> tasksAssigned) {
+        this.tasksAssigned = tasksAssigned;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
     }
 }

@@ -20,10 +20,15 @@ INSERT INTO tb_tasks (title, description, status, priority, due_date, created_at
 INSERT INTO task_teams  (task_id, team_id) VALUES (1, 1);
 INSERT INTO task_teams  (task_id, team_id) VALUES (2, 2);
 
---Inserir Tags
+-- Inserir Tags
 INSERT INTO tb_tags (name, color) VALUES ('Marketing', 'Vermelho');
 INSERT INTO tb_tags (name, color) VALUES ('Tecnologia da Informação', 'Azul');
 
 -- Relacionar TASKS com TAGS
 INSERT INTO task_tags (task_id, tag_id) VALUES (1, 2);
 INSERT INTO task_tags (task_id, tag_id) VALUES (2, 1);
+
+-- Inserir Notifications
+INSERT INTO tb_notifications (message, created_at, is_read, notifications_user_id) VALUES('Usuário em estado de ausência', '2024-05-25 09:00:00', true, 2);
+INSERT INTO tb_notifications (message, created_at, is_read, notifications_user_id) VALUES ('Usuario presente', '2024-05-25 09:00:00', TRUE, 1);
+
