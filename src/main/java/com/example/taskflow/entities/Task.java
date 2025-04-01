@@ -26,13 +26,6 @@ public class Task {
     private Priority priority;
     @Column(name = "due_date")
     private LocalDateTime dueDate;
-    @ManyToMany
-    @JoinTable(
-            name = "task_tags",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -56,6 +49,13 @@ public class Task {
     )
     private List<Team> teams;
 
+    @ManyToMany
+    @JoinTable(
+            name = "task_tags",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
     public Task() {
     }
 

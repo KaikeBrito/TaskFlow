@@ -19,3 +19,11 @@ INSERT INTO tb_tasks (title, description, status, priority, due_date, created_at
 -- Relacionar TAREFAS a EQUIPES (Tabela task_teams - Many-to-Many)
 INSERT INTO task_teams  (task_id, team_id) VALUES (1, 1);
 INSERT INTO task_teams  (task_id, team_id) VALUES (2, 2);
+
+--Inserir Tags
+INSERT INTO tb_tags (name, color) VALUES ('Marketing', 'Vermelho');
+INSERT INTO tb_tags (name, color) VALUES ('Tecnologia da Informação', 'Azul');
+
+-- Relacionar TASKS com TAGS
+INSERT INTO task_tags (task_id, tag_id) VALUES (1, 2);
+INSERT INTO task_tags (task_id, tag_id) VALUES (2, 1);
