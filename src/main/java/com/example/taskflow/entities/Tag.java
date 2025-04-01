@@ -10,20 +10,18 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String cor;
-    @ManyToMany(
-            mappedBy = "tags"
-    )
+    private String name;
+    private String color;
+    @ManyToMany(mappedBy = "tags")
     private List<Task> tasks;
 
     public Tag(){}
 
 
-    public Tag(Long id, String nome, String cor, List<Task> tasks) {
+    public Tag(Long id, String name, String color, List<Task> tasks) {
         this.id = id;
-        this.nome = nome;
-        this.cor = cor;
+        this.name = name;
+        this.color = color;
         this.tasks = tasks;
     }
 
@@ -35,20 +33,20 @@ public class Tag {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCor() {
-        return cor;
+    public String getColor() {
+        return color;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public List<Task> getTasks() {
