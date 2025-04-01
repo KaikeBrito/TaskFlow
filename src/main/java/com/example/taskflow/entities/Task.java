@@ -26,6 +26,13 @@ public class Task {
     private Priority priority;
     @Column(name = "due_date")
     private LocalDateTime dueDate;
+    @ManyToMany
+    @JoinTable(
+            name = "task_tags",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -52,7 +59,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long id, String title, String description, Status status, Priority priority, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, User createdBy, User assignedTo, List<Team> teams) {
+    public Task(Long id, String title, String description, Status status, Priority priority, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, User createdBy, User assignedTo, List<Team> teams, List<Tag> tags) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -64,6 +71,7 @@ public class Task {
         this.createdBy = createdBy;
         this.assignedTo = assignedTo;
         this.teams = teams;
+        this.tags = tags;
     }
 
     public Long getId() {
@@ -152,5 +160,13 @@ public class Task {
 
     public void setTeams(List<Team> teams) {
         this.teams = teams;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }
