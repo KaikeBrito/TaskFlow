@@ -1,5 +1,6 @@
 package com.example.taskflow.entities;
 
+import com.example.taskflow.enums.Priority;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,8 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Priority priority;
 
     private String message;
 
@@ -25,12 +28,21 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(Long id, String message, LocalDateTime createdAt, Boolean isRead, User recipient) {
+    public Notification(Long id, String message, LocalDateTime createdAt, Boolean isRead, User recipient, Priority priority) {
         this.id = id;
         this.message = message;
         this.createdAt = createdAt;
         this.isRead = isRead;
         this.recipient = recipient;
+        this.priority = priority;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
     public Long getId() {
