@@ -2,6 +2,7 @@ package com.example.taskflow.entities;
 
 import com.example.taskflow.enums.Priority;
 import com.example.taskflow.enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -35,10 +36,12 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "created_by_user_id", nullable = false)
+    @JsonBackReference
     private User createdBy;
 
     @ManyToOne
     @JoinColumn(name = "assigned_to_user_id")
+    @JsonBackReference
     private User assignedTo;
 
     @ManyToMany

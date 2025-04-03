@@ -1,6 +1,7 @@
 package com.example.taskflow.entities;
 
 import com.example.taskflow.enums.Role;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -43,10 +44,13 @@ public class User {
 
     private Boolean isActive;
 
-    @OneToMany(mappedBy = "createdBy")
+
+    @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Task> tasksCreated;
 
-    @OneToMany(mappedBy = "assignedTo")
+    @OneToMany(mappedBy = "assignedTo", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Task> tasksAssigned;
 
     @ManyToMany
@@ -63,7 +67,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String email, Integer age, String username, String password, Role role, LocalDateTime createdAt, Boolean isActive, List<Task> tasksCreated, List<Task> tasksAssigned, List<Team> teams, List<Notification> notifications) {
+    public User(Long id, String name, String email, Integer age, String username, String password, Role role, LocalDateTime createdAt, Boolean isActive) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -73,10 +77,6 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
         this.isActive = isActive;
-        this.tasksCreated = tasksCreated;
-        this.tasksAssigned = tasksAssigned;
-        this.teams = teams;
-        this.notifications = notifications;
     }
 
     public Long getId() {

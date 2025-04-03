@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_reports")
-
 public class Report {
 
     @Id
@@ -30,14 +29,14 @@ public class Report {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status = Status.IN_PROGRESS; // Valor padrão
+    private Status status = Status.IN_PROGRESS;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "generated_by_user_id", nullable = false)
     private User generatedBy;
 
     @Column(name = "file_path")
-    private String filePath; // Caminho do arquivo PDF ou URL
+    private String filePath;
 
 
     @PreUpdate
@@ -47,7 +46,6 @@ public class Report {
         }
     }
 
-    // Construtor para criação de relatórios
     public  Report() {}
     public Report(Type type, LocalDateTime startDate, LocalDateTime endDate, User generatedBy) {
         this.type = type;
