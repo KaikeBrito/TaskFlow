@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -21,4 +22,9 @@ public class UserService {
         return result.stream().map(UserDTO::new).toList();
     }
 
+    @Transactional
+    public UserDTO findById(Long id){
+        User result = userRepository.findById(id).get();
+        return new UserDTO(result);
+    }
 }

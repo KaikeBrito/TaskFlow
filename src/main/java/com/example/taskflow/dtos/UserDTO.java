@@ -19,7 +19,6 @@ public class UserDTO {
 
     private String password;
 
-
     private Role role;
 
     private LocalDateTime createdAt = LocalDateTime.now();
